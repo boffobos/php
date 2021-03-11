@@ -61,6 +61,10 @@ function keyOutput(input)
     {
         inputWindow.textContent += '9';
     }
+    else if ( input === 'btn_comma' )
+    {
+        inputWindow.textContent += '.';
+    }
 }
 
 //Make binary operation on display content. Input should be pressed button of operation.

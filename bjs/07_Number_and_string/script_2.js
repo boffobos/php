@@ -70,14 +70,29 @@ function keyOutput(input)
 //Make binary operation on display content. Input should be pressed button of operation.
 function unaryOperator(input) 
 {
-    if(input === 'btn_sqrt')
-    {
-        inputWindow.textContent = Math.sqrt(Number(inputWindow.textContent));
-    }
     if(input === 'btn_plusmn')
     {
         inputWindow.textContent = - Number(inputWindow.textContent);
     }
+    else if(input === 'btn_sqrt')
+    {
+        inputWindow.textContent = Math.sqrt(Number(inputWindow.textContent));
+    }
+    else if(input === 'btn_square')
+    {
+        inputWindow.textContent = Number(inputWindow.textContent) ** 2;
+    }
+    else if(input === 'btn_reciprocal')
+    {
+        inputWindow.textContent = 1/ Number(inputWindow.textContent);
+    }
+    else if(input === 'btn_lg')
+    {
+        inputWindow.textContent = Math.log10(Number(inputWindow.textContent));
+    }
+    
+
+
 }
 
 //make operation between operand in veriable and display content. Input should be variable operation
@@ -117,8 +132,6 @@ function operationDeclaration(input)
 
 function calcLogic(kId, kClass)
 {
-        //console.log(kId);
-        //console.log(kClass);
     if(kId === 'btn_clr')
     {
         firstOperand = null;
@@ -139,14 +152,14 @@ function calcLogic(kId, kClass)
             {
                 keyOutput(kId);
             }
-            else if(lastButtonClass === 'binary' || lastButtonClass === 'unary')
+            else if(lastButtonClass === 'binary' || lastButtonClass === 'unary' || lastButtonClass === 'service')
             {
                 inputWindow.textContent = '';
                 keyOutput(kId);
             }
             // here can be else for some use if add new key classes over nums binary unary
         }
-        else if(kClass.includes('binary') || kClass.includes('unary'))
+        else if(kClass.includes('binary') || kClass.includes('unary') )
         {
             if(kClass.includes('unary'))
             {
@@ -228,15 +241,19 @@ function calcLogic(kId, kClass)
    
     if (kClass.includes('nums'))
     {
-        lastButtonClass = 'nums'
+        lastButtonClass = 'nums';
     }
     else if (kClass.includes('unary'))
     {
-        lastButtonClass = 'unary'
+        lastButtonClass = 'unary';
     }
     else if (kClass.includes('binary'))
     {
-        lastButtonClass = 'binary'
+        lastButtonClass = 'binary';
+    }
+    else if (kClass.includes('service'))
+    {
+        lastButtonClass = 'service';
     }
    
    // console.log(inputWindow.textContent);

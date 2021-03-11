@@ -9,3 +9,27 @@
     overflow: hidden;
 }
 
+.nums {
+    background-color: rgb(171, 219, 241);
+}
+
+.unary {
+    background-color: rgb(247, 195, 100);
+}
+
+.binary {
+    background-color: rgb(201, 196, 196);
+}
+
+#btn_clr {
+    background-color: rgba(255, 0, 0, 0.534);
+}
+#btn_ce {
+    background-color: rgba(255, 0, 0, 0.534);
+}
+
+
+.card-body {
+    background-color: rgb(236, 210, 61);
+    border-radius: 5px;
+}

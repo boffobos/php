@@ -1,5 +1,4 @@
 let inputWindow = document.getElementById('inputWindow');
-//let displayContent = document.getElementById('inputWindow').textContent;
 let firstOperand = null;
 let secondOperand = null;
 let operation = null;
@@ -9,11 +8,9 @@ inputWindow.textContent = 0;
 function checkPressedButtons() {
     const buttons = document.querySelectorAll('button');
     const buttonsArr = Array.from(buttons);
-    //let keyP = null;
     buttonsArr.forEach(elem => elem.addEventListener('click', (event) => {
            let keyId = event.target.id;
            let keyClass = event.target.className;
-          // console.log(event);
            calcLogic(keyId, keyClass);
         }))
 }
@@ -256,8 +253,5 @@ function calcLogic(kId, kClass)
         lastButtonClass = 'service';
     }
    
-   // console.log(inputWindow.textContent);
-   // console.log(lastButtonClass);
-
 }
 checkPressedButtons();

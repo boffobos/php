@@ -166,10 +166,11 @@ function calcLogic(kId, kClass)
                     {
                         unaryOperator(kId);
                     }
-                    else
-                    {
-                        inputWindow.textContent = 'Error';
-                    }
+                    //else if()
+                }
+                else
+                {
+                    inputWindow.textContent = 'Error';
                 }
             }
             else

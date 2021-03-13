@@ -1,8 +1,10 @@
 let inputWindow = document.getElementById('inputWindow');
+let flowOutputWindow = document.getElementById('flowOut');
 let firstOperand = null;
 let secondOperand = null;
 let operation = null;
 let lastButtonClass = null;
+let lastButtonId = null;
 inputWindow.textContent = 0;
 
 function checkPressedButtons() {
@@ -12,7 +14,9 @@ function checkPressedButtons() {
            let keyId = event.target.id;
            let keyClass = event.target.className;
            calcLogic(keyId, keyClass);
+           //flowOutput(keyId, keyClass);
         }))
+
 }
 
 //output digits to the screen
@@ -120,11 +124,12 @@ function binaryOperator(input)
 
 //Handle key input and write meaning of operation to variable operation
 function operationDeclaration(input)
-{
-    if(input === 'btn_sum'){operation = 'sum';}
-    if(input === 'btn_sub'){operation = 'sub';}
-    if(input === 'btn_multiply'){operation = 'mult';}
-    if(input === 'btn_division'){operation = 'div';}
+{   let oper;
+    if(input === 'btn_sum'){operation = 'sum'; oper = '+';}
+    if(input === 'btn_sub'){operation = 'sub'; oper = '-';}
+    if(input === 'btn_multiply'){operation = 'mult'; oper = '*';}
+    if(input === 'btn_division'){operation = 'div'; oper = '/';}
+    return oper;
 }
 
 function calcLogic(kId, kClass)
@@ -140,6 +145,8 @@ function calcLogic(kId, kClass)
     {
         inputWindow.textContent = 0;
     }
+
+    flowOutput(kId, kClass, lastButtonClass);
         
     if(firstOperand !== null)
     {
@@ -162,11 +169,11 @@ function calcLogic(kId, kClass)
             {
                 if(typeof Number(inputWindow.textContent) === 'number')
                 {
-                    if(lastButtonClass === 'nums')
+                    if(lastButtonClass === 'nums' || lastButtonId === 'btn_result' || lastButtonClass === 'unary')
                     {
                         unaryOperator(kId);
                     }
-                    //else if()
+                    // else if()
                 }
                 else
                 {
@@ -253,6 +260,161 @@ function calcLogic(kId, kClass)
     {
         lastButtonClass = 'service';
     }
+    lastButtonId = kId;
    
 }
+
+function flowOutput(kId, kClass, lastButtonClass)
+{
+    let oper = operationDeclaration(kId);
+    if (kId === 'btn_result')
+    {
+        flowOutputWindow.textContent = '';
+    }
+    else if (kClass.includes('binary') && lastButtonClass !== 'unary')
+    {
+        flowOutputWindow.textContent += `${inputWindow.textContent} ${oper} `;
+    }
+    else if (kClass.includes('binary'))
+    {
+        flowOutputWindow.textContent += ` ${oper} `;
+    }
+    else if (kClass.includes('unary'))
+    {
+        if(kId === 'btn_sqrt')
+        {
+            flowOutputWindow.textContent += `sqrt(${inputWindow.textContent}) `;
+        }
+        else if(kId === 'btn_square')
+        {
+            flowOutputWindow.textContent += `${inputWindow.textContent}**2 `;
+        }
+        else if(kId === 'btn_reciprocal')
+        {
+            flowOutputWindow.textContent += `1/${inputWindow.textContent} `;
+        }
+        else if(kId === 'btn_lg')
+        {
+            flowOutputWindow.textContent += `lg(${inputWindow.textContent}) `;
+        }
+    }
+    else if (kId === "btn_clr")
+    {
+        flowOutputWindow.textContent = '';
+    }
+    
+
+}
+
+function keyBoardHandler()
+{
+    document.addEventListener('keypress', (event) =>{
+        let keyId = null;
+        let keyClass = null;
+        // operation keys
+        if (event.key === '+')
+        {
+            keyId = 'btn_sum';
+            keyClass = 'binary';
+        }
+        else if(event.key === '-')
+        {
+            keyId = 'btn_sub';
+            keyClass = 'binary';
+        }
+        else if(event.key === '*')
+        {
+            keyId = 'btn_multiply';
+            keyClass = 'binary';
+        }
+        else if(event.key === '/')
+        {
+            keyId = 'btn_division';
+            keyClass = 'binary';
+        }
+        else if(event.key === 'Enter')
+        {
+            keyId = 'btn_result';
+            keyClass = 'binary';
+        }
+        //number keys
+        else if(event.key === '0')
+        {
+            keyId = 'btn_0';
+            keyClass = 'nums';
+        }
+        else if(event.key === '1')
+        {
+            keyId = 'btn_1';
+            keyClass = 'nums';
+        }
+        else if(event.key === '2')
+        {
+            keyId = 'btn_2';
+            keyClass = 'nums';
+        }
+        else if(event.key === '3')
+        {
+            keyId = 'btn_3';
+            keyClass = 'nums';
+        }
+        else if(event.key === '4')
+        {
+            keyId = 'btn_4';
+            keyClass = 'nums';
+        }
+        else if(event.key === '5')
+        {
+            keyId = 'btn_5';
+            keyClass = 'nums';
+        }
+        else if(event.key === '6')
+        {
+            keyId = 'btn_6';
+            keyClass = 'nums';
+        }
+        else if(event.key === '7')
+        {
+            keyId = 'btn_7';
+            keyClass = 'nums';
+        }
+        else if(event.key === '8')
+        {
+            keyId = 'btn_8';
+            keyClass = 'nums';
+        }
+        else if(event.key === '9')
+        {
+            keyId = 'btn_9';
+            keyClass = 'nums';
+        }
+        else if(event.key === '9')
+        {
+            keyId = 'btn_comma';
+            keyClass = 'nums';
+        }
+        //service keys
+        else if(event.key === 'Escape')
+        {
+            keyId = 'btn_clr';
+            keyClass = null;
+        }
+        else if(event.key === 'Delete')
+        {
+            keyId = 'btn_clr';
+            keyClass = 'service';
+        }
+        else if(event.key === 'Enter')
+        {
+            keyId = 'btn_result';
+            keyClass = 'binary';
+        }
+        calcLogic(keyId, keyClass);
+    })
+    
+}
+
+
+
 checkPressedButtons();
+keyBoardHandler();

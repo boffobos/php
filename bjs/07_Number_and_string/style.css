@@ -33,3 +33,17 @@
     background-color: rgb(236, 210, 61);
     border-radius: 5px;
 }
+
+#flowOut {
+    font-size: 0.7rem;
+    background-color: #ebe9e9;
+    min-height: 30px;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.output {
+    background-color: #fff;
+    border-radius: 5px;
+      
+}

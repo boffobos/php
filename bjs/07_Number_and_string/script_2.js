@@ -15,7 +15,11 @@ function checkPressedButtons() {
            let keyClass = event.target.className;
            calcLogic(keyId, keyClass);
            //flowOutput(keyId, keyClass);
-        }))
+        }));
+    document.addEventListener('keydown', (event) =>{
+        let keyboardKey = event.key;
+        keyBoardHandler(keyboardKey);
+    })    
 
 }
 
@@ -306,115 +310,109 @@ function flowOutput(kId, kClass, lastButtonClass)
 
 }
 
-function keyBoardHandler()
+function keyBoardHandler(keyboardKey)
 {
-    document.addEventListener('keypress', (event) =>{
-        let keyId = null;
-        let keyClass = null;
-        // operation keys
-        if (event.key === '+')
+        // operation keys 
+        if(keyboardKey === '+')
         {
             keyId = 'btn_sum';
             keyClass = 'binary';
         }
-        else if(event.key === '-')
+        else if(keyboardKey === '-')
         {
             keyId = 'btn_sub';
             keyClass = 'binary';
         }
-        else if(event.key === '*')
+        else if(keyboardKey === '*')
         {
             keyId = 'btn_multiply';
             keyClass = 'binary';
         }
-        else if(event.key === '/')
+        else if(keyboardKey === '/')
         {
             keyId = 'btn_division';
             keyClass = 'binary';
         }
-        else if(event.key === 'Enter')
+        else if(keyboardKey === 'Enter')
         {
             keyId = 'btn_result';
             keyClass = 'binary';
         }
         //number keys
-        else if(event.key === '0')
+        else if(keyboardKey === '0')
         {
             keyId = 'btn_0';
             keyClass = 'nums';
         }
-        else if(event.key === '1')
+        else if(keyboardKey === '1')
         {
             keyId = 'btn_1';
             keyClass = 'nums';
         }
-        else if(event.key === '2')
+        else if(keyboardKey === '2')
         {
             keyId = 'btn_2';
             keyClass = 'nums';
         }
-        else if(event.key === '3')
+        else if(keyboardKey === '3')
         {
             keyId = 'btn_3';
             keyClass = 'nums';
         }
-        else if(event.key === '4')
+        else if(keyboardKey === '4')
         {
             keyId = 'btn_4';
             keyClass = 'nums';
         }
-        else if(event.key === '5')
+        else if(keyboardKey === '5')
         {
             keyId = 'btn_5';
             keyClass = 'nums';
         }
-        else if(event.key === '6')
+        else if(keyboardKey === '6')
         {
             keyId = 'btn_6';
             keyClass = 'nums';
         }
-        else if(event.key === '7')
+        else if(keyboardKey === '7')
         {
             keyId = 'btn_7';
             keyClass = 'nums';
         }
-        else if(event.key === '8')
+        else if(keyboardKey === '8')
         {
             keyId = 'btn_8';
             keyClass = 'nums';
         }
-        else if(event.key === '9')
+        else if(keyboardKey === '9')
         {
             keyId = 'btn_9';
             keyClass = 'nums';
         }
-        else if(event.key === '9')
+        else if(keyboardKey === '.')
         {
             keyId = 'btn_comma';
             keyClass = 'nums';
         }
         //service keys
-        else if(event.key === 'Escape')
+        else if(keyboardKey === 'Escape')
         {
             keyId = 'btn_clr';
             keyClass = null;
         }
-        else if(event.key === 'Delete')
+        else if(keyboardKey === 'Delete')
         {
             keyId = 'btn_clr';
             keyClass = 'service';
         }
-        else if(event.key === 'Enter')
+        else if(keyboardKey === 'Enter')
         {
             keyId = 'btn_result';
             keyClass = 'binary';
         }
         calcLogic(keyId, keyClass);
-    })
-    
 }
 
 
 
 checkPressedButtons();
-keyBoardHandler();

@@ -38,8 +38,9 @@
     font-size: 0.7rem;
     background-color: #ebe9e9;
     min-height: 30px;
+    max-height: 150px;
     height: fit-content;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .output {

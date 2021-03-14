@@ -18,7 +18,7 @@ function checkPressedButtons() {
         }));
     document.addEventListener('keydown', (event) =>{
         let keyboardKey = event.key;
-        if(keyboardKey === 'Ener'){
+        if(keyboardKey === 'Enter'){
             event.preventDefault();
         }
         keyBoardHandler(keyboardKey);
@@ -27,74 +27,74 @@ function checkPressedButtons() {
 }
 
 //output digits to the screen
-function keyOutput(input)
+function keyOutput(kId)
 {
-    if ( input === 'btn_0' )
+    if ( kId === 'btn_0' )
     {
         inputWindow.textContent += '0';
     } 
-    else if ( input === 'btn_1' )
+    else if ( kId === 'btn_1' )
     {
         inputWindow.textContent += '1';
     } 
-    else if ( input === 'btn_2' )
+    else if ( kId === 'btn_2' )
     {
         inputWindow.textContent += '2';
     } 
-    else if ( input === 'btn_3' )
+    else if ( kId === 'btn_3' )
     {
         inputWindow.textContent += '3';
     } 
-    else if ( input === 'btn_4' )
+    else if ( kId === 'btn_4' )
     {
         inputWindow.textContent += '4';
     } 
-    else if ( input === 'btn_5' )
+    else if ( kId === 'btn_5' )
     {
         inputWindow.textContent += '5';
     } 
-    else if ( input === 'btn_6' )
+    else if ( kId === 'btn_6' )
     {
         inputWindow.textContent += '6';
     } 
-    else if ( input === 'btn_7' )
+    else if ( kId === 'btn_7' )
     {
         inputWindow.textContent += '7';
     }
-    else if ( input === 'btn_8' )
+    else if ( kId === 'btn_8' )
     {
         inputWindow.textContent += '8';
     } 
-    else if ( input === 'btn_9' )
+    else if ( kId === 'btn_9' )
     {
         inputWindow.textContent += '9';
     }
-    else if ( input === 'btn_comma' )
+    else if ( kId === 'btn_comma' )
     {
         inputWindow.textContent += '.';
     }
 }
 
 //Make binary operation on display content. Input should be pressed button of operation.
-function unaryOperator(input) 
+function unaryOperator(kId) 
 {
-    if(input === 'btn_plusmn')
+    if(kId === 'btn_plusmn')
     {
         inputWindow.textContent = - Number(inputWindow.textContent);
     }
-    else if(input === 'btn_sqrt')
+    else if(kId === 'btn_sqrt')
     {
         inputWindow.textContent = Math.sqrt(Number(inputWindow.textContent));
     }
-    else if(input === 'btn_square')
+    else if(kId === 'btn_square')
     {
         inputWindow.textContent = Number(inputWindow.textContent) ** 2;
     }
-    else if(input === 'btn_reciprocal')
+    else if(kId === 'btn_reciprocal')
     {
         inputWindow.textContent = 1 / Number(inputWindow.textContent);
     }
-    else if(input === 'btn_lg')
+    else if(kId === 'btn_lg')
     {
         inputWindow.textContent = Math.log10(Number(inputWindow.textContent));
     }
@@ -104,24 +104,24 @@ function unaryOperator(input)
 }
 
 //make operation between operand in veriable and display content. Input should be variable operation
-function binaryOperator(input)
+function binaryOperator(kId)
 {
-    if(input === 'sum')
+    if(kId === 'sum')
     {
         inputWindow.textContent = firstOperand + Number(inputWindow.textContent);
         firstOperand = Number(inputWindow.textContent);
     }
-    else if(input === 'sub')
+    else if(kId === 'sub')
     {
         inputWindow.textContent = firstOperand - Number(inputWindow.textContent);
         firstOperand = Number(inputWindow.textContent);
     }
-    else if(input === 'mult')
+    else if(kId === 'mult')
     {
         inputWindow.textContent = firstOperand * Number(inputWindow.textContent);
         firstOperand = Number(inputWindow.textContent);
     }
-    else if(input === 'div')
+    else if(kId === 'div')
     {
         inputWindow.textContent = firstOperand / Number(inputWindow.textContent);
         firstOperand = Number(inputWindow.textContent);
@@ -130,12 +130,12 @@ function binaryOperator(input)
 }
 
 //Handle key input and write meaning of operation to variable operation
-function operationDeclaration(input)
+function operationDeclaration(kId)
 {   let oper;
-    if(input === 'btn_sum'){operation = 'sum'; oper = '+';}
-    if(input === 'btn_sub'){operation = 'sub'; oper = '-';}
-    if(input === 'btn_multiply'){operation = 'mult'; oper = '*';}
-    if(input === 'btn_division'){operation = 'div'; oper = '/';}
+    if(kId === 'btn_sum'){operation = 'sum'; oper = '+';}
+    if(kId === 'btn_sub'){operation = 'sub'; oper = '-';}
+    if(kId === 'btn_multiply'){operation = 'mult'; oper = '*';}
+    if(kId === 'btn_division'){operation = 'div'; oper = '/';}
     return oper;
 }
 
@@ -271,6 +271,7 @@ function calcLogic(kId, kClass)
    
 }
 
+//print out previous input and operatin to separeate window
 function flowOutput(kId, kClass, lastButtonClass)
 {
     let oper = operationDeclaration(kId);
@@ -313,6 +314,7 @@ function flowOutput(kId, kClass, lastButtonClass)
 
 }
 
+//handle keyboard input in addition to mouse input from page
 function keyBoardHandler(keyboardKey)
 {
         // operation keys 

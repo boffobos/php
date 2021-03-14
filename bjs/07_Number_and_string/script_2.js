@@ -18,6 +18,9 @@ function checkPressedButtons() {
         }));
     document.addEventListener('keydown', (event) =>{
         let keyboardKey = event.key;
+        if(keyboardKey === 'Ener'){
+            event.preventDefault();
+        }
         keyBoardHandler(keyboardKey);
     })    
 
@@ -89,7 +92,7 @@ function unaryOperator(input)
     }
     else if(input === 'btn_reciprocal')
     {
-        inputWindow.textContent = 1/ Number(inputWindow.textContent);
+        inputWindow.textContent = 1 / Number(inputWindow.textContent);
     }
     else if(input === 'btn_lg')
     {
@@ -398,7 +401,7 @@ function keyBoardHandler(keyboardKey)
         else if(keyboardKey === 'Escape')
         {
             keyId = 'btn_clr';
-            keyClass = null;
+            keyClass = '';
         }
         else if(keyboardKey === 'Delete')
         {
@@ -406,7 +409,7 @@ function keyBoardHandler(keyboardKey)
             keyClass = 'service';
         }
         else if(keyboardKey === 'Enter')
-        {
+        {   
             keyId = 'btn_result';
             keyClass = 'binary';
         }

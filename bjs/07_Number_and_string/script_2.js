@@ -137,6 +137,26 @@ function unaryOperator(kId)
         displayVar = Math.log10(displayVar);
         inputWindow.textContent = displayVar;
     }
+    else if(kId === 'btn_cbrt')
+    {
+        displayVar = Math.cbrt(displayVar);
+        inputWindow.textContent = displayVar;
+    }
+    else if(kId === 'btn_sin')
+    {
+        displayVar = Math.sin(displayVar * Math.PI / 180);
+        inputWindow.textContent = displayVar;
+    }
+    else if(kId === 'btn_cos')
+    {
+        displayVar = Math.cos(displayVar * Math.PI / 180);
+        inputWindow.textContent = displayVar;
+    }
+    else if(kId === 'btn_ln')
+    {
+        displayVar = Math.log(displayVar);
+        inputWindow.textContent = displayVar;
+    }
     
 
 
@@ -335,6 +355,7 @@ function flowOutput(kId, kClass, lastButtonClass)
     {
         flowOutputWindow.textContent += ` ${oper} `;
     }
+    //output unary operations
     else if (kClass.includes('unary'))
     {
         if(kId === 'btn_sqrt')
@@ -343,7 +364,7 @@ function flowOutput(kId, kClass, lastButtonClass)
         }
         else if(kId === 'btn_square')
         {
-            flowOutputWindow.textContent += `${displayVar}**2 `;
+            flowOutputWindow.textContent += `${displayVar}^2 `;
         }
         else if(kId === 'btn_reciprocal')
         {
@@ -352,6 +373,22 @@ function flowOutput(kId, kClass, lastButtonClass)
         else if(kId === 'btn_lg')
         {
             flowOutputWindow.textContent += `lg(${displayVar}) `;
+        }
+        else if(kId === 'btn_cbrt')
+        {
+            flowOutputWindow.textContent += `cbrt(${displayVar}) `;
+        }
+        else if(kId === 'btn_sin')
+        {
+            flowOutputWindow.textContent += `sin(${displayVar}) `;
+        }
+        else if(kId === 'btn_cos')
+        {
+            flowOutputWindow.textContent += `cos(${displayVar}) `;
+        }
+        else if(kId === 'btn_ln')
+        {
+            flowOutputWindow.textContent += `ln(${displayVar}) `;
         }
     }
     else if (kId === "btn_clr")

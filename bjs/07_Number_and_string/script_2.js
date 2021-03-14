@@ -246,7 +246,10 @@ function calcLogic(kId, kClass)
                     {
                         unaryOperator(kId);
                     }
-                    // else if()
+                    else if(lastButtonClass === 'binary')
+                    {
+                        unaryOperator(kId);
+                    }
                 }
                 else
                 {

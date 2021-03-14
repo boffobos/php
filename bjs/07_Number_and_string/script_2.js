@@ -104,14 +104,14 @@ function keyOutput(kId)
     {
         displayVar = displayVar.toString();
         displayVar += '.';
-        displayVar = Number(displayVar);
+        //displayVar = parseFloat(displayVar);
         inputWindow.textContent = displayVar;
     }
 }
 
 //Make binary operation on display content. Input should be pressed button of operation.
 function unaryOperator(kId) 
-{
+{   displayVar = Number(displayVar);
     if(kId === 'btn_plusmn')
     {
         displayVar = - displayVar
@@ -165,6 +165,7 @@ function unaryOperator(kId)
 //make operation between operand in veriable and display content. Input should be variable operation
 function binaryOperator(kId)
 {
+    displayVar = Number(displayVar);
     if(kId === 'sum')
     {
         displayVar = firstOperand + displayVar;
@@ -194,11 +195,18 @@ function binaryOperator(kId)
 
 //Handle key input and write meaning of operation to variable operation
 function operationDeclaration(kId)
-{   let oper;
+{   
     if(kId === 'btn_sum'){operation = 'sum'; oper = '+';}
-    if(kId === 'btn_sub'){operation = 'sub'; oper = '-';}
-    if(kId === 'btn_multiply'){operation = 'mult'; oper = '*';}
-    if(kId === 'btn_division'){operation = 'div'; oper = '/';}
+    else if(kId === 'btn_sub'){operation = 'sub';}
+    else if(kId === 'btn_multiply'){operation = 'mult';}
+    else if(kId === 'btn_division'){operation = 'div';}
+}
+function operationExplanation(kId)
+{   let oper;
+    if(kId === 'btn_sum'){oper = '+';}
+    else if(kId === 'btn_sub'){oper = '-';}
+    else if(kId === 'btn_multiply'){oper = '*';}
+    else if(kId === 'btn_division'){oper = '/';}
     return oper;
 }
 
@@ -217,9 +225,9 @@ function calcLogic(kId, kClass)
         inputWindow.textContent = 0;
         displayVar = '';
     }
-
+    
     flowOutput(kId, kClass, lastButtonClass);
-        
+
     if(firstOperand !== null)
     {
         if(kClass.includes('nums'))
@@ -311,7 +319,7 @@ function calcLogic(kId, kClass)
             }
             else
             {
-                firstOperand = displayVar;
+                firstOperand = Number(displayVar);
                 operationDeclaration(kId);
             }
         }
@@ -320,7 +328,6 @@ function calcLogic(kId, kClass)
             //for future use
         }
     }
-   
    
     if (kClass.includes('nums'))
     {
@@ -345,7 +352,7 @@ function calcLogic(kId, kClass)
 //print out previous input and operatin to separeate window
 function flowOutput(kId, kClass, lastButtonClass)
 {
-    let oper = operationDeclaration(kId);
+    let oper = operationExplanation(kId);
     if (kId === 'btn_result')
     {
         flowOutputWindow.textContent = '';

@@ -5,6 +5,7 @@ let secondOperand = null;
 let operation = null;
 let lastButtonClass = null;
 let lastButtonId = null;
+let displayVar = '';
 inputWindow.textContent = 0;
 
 function checkPressedButtons() {
@@ -31,47 +32,80 @@ function keyOutput(kId)
 {
     if ( kId === 'btn_0' )
     {
-        inputWindow.textContent += '0';
+        displayVar = displayVar.toString();
+        displayVar += '0';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_1' )
     {
-        inputWindow.textContent += '1';
+        displayVar = displayVar.toString();
+        displayVar += '1';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_2' )
     {
-        inputWindow.textContent += '2';
+        displayVar = displayVar.toString();
+        displayVar += '2';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_3' )
     {
-        inputWindow.textContent += '3';
+        displayVar = displayVar.toString();
+        displayVar += '3';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_4' )
     {
-        inputWindow.textContent += '4';
+        displayVar = displayVar.toString();
+        displayVar += '4';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_5' )
     {
-        inputWindow.textContent += '5';
+        displayVar = displayVar.toString();
+        displayVar += '5';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_6' )
     {
-        inputWindow.textContent += '6';
+        displayVar = displayVar.toString();
+        displayVar += '6';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_7' )
     {
-        inputWindow.textContent += '7';
+        displayVar = displayVar.toString();
+        displayVar += '7';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     }
     else if ( kId === 'btn_8' )
     {
-        inputWindow.textContent += '8';
+        displayVar = displayVar.toString();
+        displayVar += '8';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     } 
     else if ( kId === 'btn_9' )
     {
-        inputWindow.textContent += '9';
+        displayVar = displayVar.toString();
+        displayVar += '9';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     }
     else if ( kId === 'btn_comma' )
     {
-        inputWindow.textContent += '.';
+        displayVar = displayVar.toString();
+        displayVar += '.';
+        displayVar = Number(displayVar);
+        inputWindow.textContent = displayVar;
     }
 }
 
@@ -80,23 +114,28 @@ function unaryOperator(kId)
 {
     if(kId === 'btn_plusmn')
     {
-        inputWindow.textContent = - Number(inputWindow.textContent);
+        displayVar = - displayVar
+        inputWindow.textContent = displayVar;
     }
     else if(kId === 'btn_sqrt')
     {
-        inputWindow.textContent = Math.sqrt(Number(inputWindow.textContent));
+        displayVar = Math.sqrt(displayVar);
+        inputWindow.textContent = displayVar;
     }
     else if(kId === 'btn_square')
     {
-        inputWindow.textContent = Number(inputWindow.textContent) ** 2;
+        displayVar = displayVar ** 2;
+        inputWindow.textContent = displayVar;
     }
     else if(kId === 'btn_reciprocal')
     {
-        inputWindow.textContent = 1 / Number(inputWindow.textContent);
+        displayVar = 1 / displayVar;
+        inputWindow.textContent = displayVar;
     }
     else if(kId === 'btn_lg')
     {
-        inputWindow.textContent = Math.log10(Number(inputWindow.textContent));
+        displayVar = Math.log10(displayVar);
+        inputWindow.textContent = displayVar;
     }
     
 
@@ -108,23 +147,27 @@ function binaryOperator(kId)
 {
     if(kId === 'sum')
     {
-        inputWindow.textContent = firstOperand + Number(inputWindow.textContent);
-        firstOperand = Number(inputWindow.textContent);
+        displayVar = firstOperand + displayVar;
+        inputWindow.textContent = displayVar;
+        firstOperand = displayVar;
     }
     else if(kId === 'sub')
     {
-        inputWindow.textContent = firstOperand - Number(inputWindow.textContent);
-        firstOperand = Number(inputWindow.textContent);
+        displayVar = firstOperand - displayVar;
+        inputWindow.textContent = displayVar;
+        firstOperand = displayVar;
     }
     else if(kId === 'mult')
     {
-        inputWindow.textContent = firstOperand * Number(inputWindow.textContent);
-        firstOperand = Number(inputWindow.textContent);
+        displayVar = firstOperand * displayVar;
+        inputWindow.textContent = displayVar;
+        firstOperand = displayVar;
     }
     else if(kId === 'div')
     {
-        inputWindow.textContent = firstOperand / Number(inputWindow.textContent);
-        firstOperand = Number(inputWindow.textContent);
+        displayVar = firstOperand / displayVar;
+        inputWindow.textContent = displayVar;
+        firstOperand = displayVar;
     }
     
 }
@@ -147,10 +190,12 @@ function calcLogic(kId, kClass)
         operation = null;
         lastButtonClass = null;
         inputWindow.textContent = 0;
+        displayVar = '';
     }
     if(kId === 'btn_ce')
     {
         inputWindow.textContent = 0;
+        displayVar = '';
     }
 
     flowOutput(kId, kClass, lastButtonClass);
@@ -165,7 +210,8 @@ function calcLogic(kId, kClass)
             }
             else if(lastButtonClass === 'binary' || lastButtonClass === 'unary' || lastButtonClass === 'service')
             {
-                inputWindow.textContent = '';
+                displayVar = '';
+                inputWindow.textContent = displayVar;
                 keyOutput(kId);
             }
             // here can be else for some use if add new key classes over nums binary unary
@@ -174,7 +220,7 @@ function calcLogic(kId, kClass)
         {
             if(kClass.includes('unary'))
             {
-                if(typeof Number(inputWindow.textContent) === 'number')
+                if(typeof displayVar === 'number')
                 {
                     if(lastButtonClass === 'nums' || lastButtonId === 'btn_result' || lastButtonClass === 'unary')
                     {
@@ -215,7 +261,8 @@ function calcLogic(kId, kClass)
         {
             if(kClass.includes('nums'))
             {
-                inputWindow.textContent = '';
+                displayVar = '';
+                inputWindow.textContent = displayVar;
                 keyOutput(kId);
             }
         }
@@ -223,7 +270,8 @@ function calcLogic(kId, kClass)
         {       
             if(lastButtonClass === 'unary')
             {   
-                inputWindow.textContent = '';
+                displayVar = '';
+                inputWindow.textContent = displayVar;
                 keyOutput(kId);
             }
             else
@@ -240,7 +288,7 @@ function calcLogic(kId, kClass)
             }
             else
             {
-                firstOperand = Number(inputWindow.textContent);
+                firstOperand = displayVar;
                 operationDeclaration(kId);
             }
         }
@@ -281,7 +329,7 @@ function flowOutput(kId, kClass, lastButtonClass)
     }
     else if (kClass.includes('binary') && lastButtonClass !== 'unary')
     {
-        flowOutputWindow.textContent += `${inputWindow.textContent} ${oper} `;
+        flowOutputWindow.textContent += `${displayVar} ${oper} `;
     }
     else if (kClass.includes('binary'))
     {
@@ -291,19 +339,19 @@ function flowOutput(kId, kClass, lastButtonClass)
     {
         if(kId === 'btn_sqrt')
         {
-            flowOutputWindow.textContent += `sqrt(${inputWindow.textContent}) `;
+            flowOutputWindow.textContent += `sqrt(${displayVar}) `;
         }
         else if(kId === 'btn_square')
         {
-            flowOutputWindow.textContent += `${inputWindow.textContent}**2 `;
+            flowOutputWindow.textContent += `${displayVar}**2 `;
         }
         else if(kId === 'btn_reciprocal')
         {
-            flowOutputWindow.textContent += `1/${inputWindow.textContent} `;
+            flowOutputWindow.textContent += `1/${displayVar} `;
         }
         else if(kId === 'btn_lg')
         {
-            flowOutputWindow.textContent += `lg(${inputWindow.textContent}) `;
+            flowOutputWindow.textContent += `lg(${displayVar}) `;
         }
     }
     else if (kId === "btn_clr")

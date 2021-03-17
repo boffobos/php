@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Угадайка</title>
@@ -9,10 +9,15 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
+    <div class="start">
+        <button id="start">Нажмите, чтобы начать игру!</button>
+    </div>
 <div class="container">
     <div class="row game-card align-items-center">
+        
         <div class="col col-md-4 offset-md-4">
             <div class="card text-center">
+                
                 <div class="card-header">
                     <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
                 </div>
@@ -37,6 +42,23 @@
         </div>
     </div>
 </div>
+<dialog id="minmax">
+    <form>
+        <div class="form-group mb-2">
+            <label for="min">Минимальное значение</label>
+            <input type="text" class="form-control" id="min">
+        </div>
+        <div class="form-group mb-2">
+            <label for="max">Максимальное значение</label>
+            <input type="text" class="form-control" id="max">
+        </div>
+        <button class="btn_dialog" id="set_interval">Начать &#9654;</button>
+    </form>
+</dialog>
+<dialog id="alert">
+    <div id="message"></div>
+    <button class="btn_dialog" id=confirm>Хорошо!</button>
+</dialog>
 <script src="script.js"></script>
 </body>
 </html>

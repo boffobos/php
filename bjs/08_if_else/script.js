@@ -72,7 +72,7 @@ function textolization (number) {
             onesText = 'девятнадцать';
         } else if (ones === 20) {
             onesText = 'двадцать';
-        } else if (ones === 0) {
+        } else if (ones === 0 && answerNumber === 0) {
             onesText = '0';
         }
     }
@@ -141,6 +141,7 @@ function textolization (number) {
         hundredsToText(hundreds);
         }
     }
+
 
     text = `${sign} ${hundredsText} ${tensText} ${onesText}`;
     if (text.length > 20) {

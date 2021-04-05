@@ -26,8 +26,8 @@ document.getElementById('generate').addEventListener('click', () => {
 
 document.getElementById('reset').addEventListener('click', () => {
     
-    document.getElementById('firstNameOutput').innerText = '';
-    document.getElementById('fatherNameOutput').innerText = '';
+    document.getElementById('firstNameOutput').innerText = 'Имя:';
+    document.getElementById('fatherNameOutput').innerText = 'Отчество:';
     document.getElementById('surnameOutput').innerText = 'Фамилия:';
     document.getElementById('genderOutput').innerText = 'Пол';
     document.getElementById('birthDayOutput').innerText = 'Дата рожения:';

@@ -175,7 +175,7 @@ const personGenerator = {
         birthDate.year = this.randomIntNumber(2021, 1903);
         birthDate.month = this.randomValue(this.months);
 
-              
+        //Генерирует дату исходя из месяца рождения. Ограничения макс. дня берется из JSON      
         for (let key in obj.list) {
             if (obj.list[key] === birthDate.month) {
                birthDate.day = this.randomIntNumber(obj.days[key], 1);
@@ -194,10 +194,10 @@ const personGenerator = {
         randomSurname: function(gender) {
         if (gender === 'Женщина') return this.randomValue(this.surnameJson) + 'а';
         else return this.randomValue(this.surnameJson);
-
     },
-
+    
     randomFathername: function(gender) {
+        //Генерирует отчество из рандомного мужского имени взятого из JSON и подставляет нужные суфиксы в зависимости от пола и имени для отчества
         let fatherName = '';
         if (gender === 'Женщина') {
             fatherName = this.randomValue(this.firstNameMaleJson);

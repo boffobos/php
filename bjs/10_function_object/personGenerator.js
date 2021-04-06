@@ -153,6 +153,7 @@ const personGenerator = {
         const obj = JSON.parse(this.occupations);
         let curYear = 2021;
         if (curYear - birthYear < 18) return 'Несовершеннолетний';
+        if (curYear - birthYear > 90) return 'На заслуженном отдыхе';
         if (gender === 'Женщина') {
             const prop = `id_${this.randomIntNumber(obj.count, obj.limit)}`;
             return obj.list[prop];
@@ -247,7 +248,7 @@ const personGenerator = {
         this.person.fatherName = this.randomFathername(this.person.gender);
         this.person.surName = this.randomSurname(this.person.gender);
         this.person.birthDate = this.randomBirthDate();
-        this.person.occupation = this.randomOccupation(this.person.gender, this.person.birthYear);
+        this.person.occupation = this.randomOccupation(this.person.gender, this.person.birthDate.year);
         return this.person;
     }
 };

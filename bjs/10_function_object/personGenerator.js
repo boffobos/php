@@ -218,38 +218,58 @@ const personGenerator = {
             fatherName = this.randomValue(this.firstNameMaleJson);
             if (fatherName.endsWith('ай') || fatherName.endsWith('ей')) {
                 fatherName = fatherName.slice(0, fatherName.length - 1)+'евна'
-            } else if ( fatherName.includes('Юрий') || fatherName.includes('Аркадий') ) {
-                fatherName = fatherName.slice(0, fatherName.length - 2)+'ьевна';
-            } else if ( fatherName.includes('Дмитрий') ) {
-                fatherName = 'Дмитриевна';
-            } else if ( fatherName.includes('Павел') ) {
-                fatherName = 'Павловна';
-            } else if ( fatherName.includes('Михаил') ) {
-                fatherName = 'Михайловна';
-            } else if ( fatherName.includes('Никита') ) {
-                fatherName = 'Никитовна';
-            } else {
-                fatherName = fatherName + 'овна'
-            }    
+            } else { switch(fatherName) {
+                        case 'Юрий':
+                            fatherName = 'Юрьевна';
+                            break;
+                        case 'Аркадий':
+                            fatherName = 'Аркадьевна';
+                            break;
+                        case 'Дмитрий':
+                            fatherName = 'Дмитриевна';
+                            break;     
+                        case 'Павел':
+                            fatherName = 'Павловна';
+                            break;
+                        case 'Михаил':
+                            fatherName = 'Михайловна';
+                            break;
+                        case 'Никита':
+                            fatherName = 'Никитовна';
+                            break
+                        default:        
+                        fatherName = fatherName + 'овна';
+                    } 
+            }   
             return fatherName;
         }
         if (gender === 'Мужчина') {
             fatherName = this.randomValue(this.firstNameMaleJson);
             if (fatherName.endsWith('ай') || fatherName.endsWith('ей')) {
                 fatherName = fatherName.slice(0, fatherName.length - 1)+'евич'
-            } else if ( fatherName.includes('Юрий') || fatherName.includes('Аркадий') ) {
-                fatherName = fatherName.slice(0, fatherName.length - 2)+'ьевич';
-            } else if ( fatherName.includes('Дмитрий') ) {
-                fatherName = 'Дмитриевич';
-            } else if ( fatherName.includes('Павел') ) {
-                fatherName = 'Павлович';
-            } else if ( fatherName.includes('Михаил') ) {
-                fatherName = 'Михайлович';
-            } else if ( fatherName.includes('Никита') ) {
-                fatherName = 'Никитович';
-            } else {
-                fatherName = fatherName + 'ович'
-            }    
+            }  else { switch(fatherName) {
+                        case 'Юрий':
+                            fatherName = 'Юрьевич';
+                            break;
+                        case 'Аркадий':
+                            fatherName = 'Аркадьевич';
+                            break;
+                        case 'Дмитрий':
+                            fatherName = 'Дмитриевич';
+                            break;     
+                        case 'Павел':
+                            fatherName = 'Павлович';
+                            break;
+                        case 'Михаил':
+                            fatherName = 'Михайлович';
+                            break;
+                        case 'Никита':
+                            fatherName = 'Никитович';
+                            break
+                        default:        
+                        fatherName = fatherName + 'ович';
+                        }
+                }    
             return fatherName;
         }
     },

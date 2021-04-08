@@ -27,7 +27,5 @@ document.getElementById('reset').addEventListener('click', () => {
     document.getElementById('surnameOutput').innerText = 'Фамилия:';
     document.getElementById('genderOutput').innerText = 'Пол';
     document.getElementById('birthDayOutput').innerText = 'Дата рожения:';
-    document.getElementById('birthMonthOutput').innerText = '';
-    document.getElementById('birthYearOutput').innerText = '';
     document.getElementById('occupationOutput').innerText = '';
 });

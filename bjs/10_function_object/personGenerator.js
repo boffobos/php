@@ -170,6 +170,20 @@ const personGenerator = {
 
     },
 
+    
+    randomBirthDate2: function() {
+        let startDate = new Date(1903, 0, 1)
+        let endDate = new Date(2021, 3, 8);
+        let birthDate = new Date(+startDate + Math.random() * (endDate - startDate));
+        let options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+
+        return birthDate.toLocaleString("ru", options);
+    },
+
     randomBirthDate: function () {
         let birthDate = {};
         let obj = JSON.parse(this.months);
@@ -247,7 +261,7 @@ const personGenerator = {
         this.person.firstName = this.randomFirstName(this.person.gender);
         this.person.fatherName = this.randomFathername(this.person.gender);
         this.person.surName = this.randomSurname(this.person.gender);
-        this.person.birthDate = this.randomBirthDate();
+        this.person.birthDate = this.randomBirthDate2();
         this.person.occupation = this.randomOccupation(this.person.gender, this.person.birthDate.year);
         return this.person;
     }

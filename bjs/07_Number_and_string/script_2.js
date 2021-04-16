@@ -1,3 +1,4 @@
+/*jshint esversion: 7*/
 let inputWindow = document.getElementById('inputWindow');
 let flowOutputWindow = document.getElementById('flowOut');
 let firstOperand = null;
@@ -23,7 +24,7 @@ function checkPressedButtons() {
             event.preventDefault();
         }
         keyBoardHandler(keyboardKey);
-    })    
+    });    
 
 }
 
@@ -92,7 +93,7 @@ function keyOutput(kId)
 function unaryOperator(kId) 
 {   displayVar = Number(displayVar);
     if(kId === 'btn_plusmn') {
-        displayVar = - displayVar
+        displayVar = - displayVar;
         inputWindow.textContent = displayVar;
     } else if(kId === 'btn_sqrt') {
         displayVar = Math.sqrt(displayVar);
@@ -381,7 +382,7 @@ function calcLogic(kId, kClass)
         {
             if(kClass.includes('unary'))
             {
-                unaryOperator(kId)
+                unaryOperator(kId);
             }
             else
             {
